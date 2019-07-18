@@ -1,0 +1,28 @@
+body {
+	background-color: #253152;
+}
+
+#app {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	#editor {
+		width: 300px;
+		height: 300px;
+		margin: 20px 20px;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: #1d1e22;
+		color: #63a58a;
+	}
+	#preview {
+		min-width: 30%;
+		min-height: 300px;
+		margin: 20px 30px;
+		background-color: white;
+		padding: 20px;
+		border-radius: 10px;
+		flex-shrink: 0;
+		flex-grow: 1;
+	}
+}
