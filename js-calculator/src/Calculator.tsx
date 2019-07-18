@@ -1,29 +1,13 @@
 import React, { useState } from "react";
 import "./App.scss";
+import Pad from "./components/Pad";
+import Display from "./components/Display";
 
 const Calculator: React.FC = () => {
 	const [acc, setAcc] = useState<number>(0);
 	const [cur, setCur] = useState<number>(0);
 	const [type, setType] = useState<string>("");
 	const [display, setDisplay] = useState<string>("0");
-
-	const buttonsValues = [
-		"AC",
-		"CE",
-		"/",
-		"*",
-		"7",
-		"8",
-		"9",
-		"-",
-		"4",
-		"5",
-		"6",
-		"+",
-		"1",
-		"2",
-		"3"
-	];
 
 	/**
 	 *
@@ -48,7 +32,7 @@ const Calculator: React.FC = () => {
 		}
 	}
 
-	function handelClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+	function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 		if (e.currentTarget.value) {
 			const input: string = e.currentTarget.value;
 
@@ -93,39 +77,8 @@ const Calculator: React.FC = () => {
 		<main>
 			<div id="calculator">
 				<h1>Super Calculator</h1>
-				<div id="screen">
-					<form action="">
-						<input type="text" id="display" value={display} readOnly />
-					</form>
-				</div>
-				<div id="pad">
-					{buttonsValues.map(value => (
-						<button
-							key={value}
-							value={value}
-							onClick={handelClick}
-							className="btn"
-						>
-							{value}
-						</button>
-					))}
-
-					<button value="=" className="vertical-btn" onClick={handelClick}>
-						=
-					</button>
-
-					<button value="0" className="horizontal-btn" onClick={handelClick}>
-						0
-					</button>
-
-					<button
-						value="."
-						className="horizontal-btn btn3"
-						onClick={handelClick}
-					>
-						.
-					</button>
-				</div>
+				<Display value={display} />
+				<Pad handleClick={handleClick} />
 			</div>
 		</main>
 	);
